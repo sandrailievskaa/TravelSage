@@ -32,7 +32,7 @@ class TravelSageUser extends Model
     public function recommendedDestinations(): BelongsToMany
     {
         return $this->belongsToMany(Destination::class, 'destinacii_has_korisnici', 'idkorisnik', 'iddest')
-            ->withPivot(['rating', 'comment', 'date']);
+            ->withPivot(['ocena', 'komentar', 'datum']);
     }
 
 

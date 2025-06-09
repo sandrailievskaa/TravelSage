@@ -45,7 +45,7 @@ class Destination extends Model
     public function recommendedByUsers(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'destinacii_has_korisnici', 'iddest', 'idkorisnik')
-            ->withPivot(['rating', 'comment', 'date']);
+            ->withPivot(['ocena', 'komentar', 'datum']);
     }
 
 }
