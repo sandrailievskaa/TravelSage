@@ -31,12 +31,14 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Почетен датум</label>
-            <input type="date" name="pochetendatum" value="{{ $travelEvent->pochetendatum }}" class="w-full border px-4 py-2 rounded">
+            <input type="date" name="pochetendatum" value="{{ $travelEvent->pochetendatum }}"
+                   class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Краен датум</label>
-            <input type="date" name="kraendatum" value="{{ $travelEvent->kraendatum }}" class="w-full border px-4 py-2 rounded">
+            <input type="date" name="kraendatum" value="{{ $travelEvent->kraendatum }}"
+                   class="w-full border px-4 py-2 rounded">
         </div>
 
 

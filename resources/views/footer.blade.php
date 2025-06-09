@@ -17,6 +17,7 @@
             gap: 10px;
             justify-items: center;
         }
+
         html {
             scroll-behavior: smooth;
         }

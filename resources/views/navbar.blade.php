@@ -18,7 +18,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark">
-    <img class="logo"  src="{{ asset('images/logo.png') }}">
+    <img class="logo" src="{{ asset('images/logo.png') }}">
     <div class="container-fluid">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
                 aria-expanded="false" aria-label="Toggle navigation">

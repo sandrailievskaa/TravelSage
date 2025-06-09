@@ -9,7 +9,8 @@
 <body class="bg-gray-100 p-6">
 <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow-md">
     <h1 class="text-2xl font-bold mb-4">Активности</h1>
-    <a href="{{ route('travel-activities.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Креирај нова активност</a>
+    <a href="{{ route('travel-activities.create') }}"
+       class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">Креирај нова активност</a>
 
     @if(session('success'))
         <p class="text-green-500 mt-4">{{ session('success') }}</p>
@@ -36,7 +37,8 @@
                 <td class="border px-4 py-2">{{ $activity->iznos }}</td>
                 <td class="border px-4 py-2">
                     <a href="{{ route('travel-activities.edit', $activity) }}" class="text-blue-500">Измени</a>
-                    <form action="{{ route('travel-activities.destroy', $activity) }}" method="POST" class="inline-block">
+                    <form action="{{ route('travel-activities.destroy', $activity) }}" method="POST"
+                          class="inline-block">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="text-red-500 ml-2">Избриши</button>
