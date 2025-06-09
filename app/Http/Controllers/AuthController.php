@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Korisnik;
+use App\Models\TravelSageUser;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,10 +24,10 @@ class AuthController extends Controller
             'datumragjanje' => 'required|date',
         ]);
 
-        $korisnik = Korisnik::where('eposhta', $request->eposhta)->first();
+        $korisnik = TravelSageUser::where('eposhta', $request->eposhta)->first();
 
         if (!$korisnik) {
-            $korisnik = new Korisnik();
+            $korisnik = new TravelSageUser();
             $korisnik->ime = $request->ime;
             $korisnik->prezime = $request->prezime;
             $korisnik->eposhta = $request->eposhta;
