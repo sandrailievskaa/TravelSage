@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Најава на корисник</title>
+    <title>Регистрација на корисник</title>
     <link rel="stylesheet" href="{{ asset('CSSs/login.css') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -46,7 +46,7 @@
 
 <div class="wrapper">
     <div class="form-container">
-        <h2>Најави се</h2>
+        <h2>Регистрирај се</h2>
 
         <form action="{{ route('login') }}" method="POST">
             @csrf

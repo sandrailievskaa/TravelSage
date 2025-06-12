@@ -12,6 +12,7 @@ class DestinationController extends Controller
 {
     public function index(): View|Factory|Application
     {
+        /*        $destinations = Destination::all()->unique('imelokacija');*/
         $destinations = Destination::all();
 
         return view('destinations/index', compact('destinations'));
