@@ -23,7 +23,6 @@ class DestinationController extends Controller
         return view('destinations/show', compact('destination'));
     }
 
-
     public function events($imelokacija): View|Factory|Application
     {
         $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
