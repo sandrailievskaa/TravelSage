@@ -12,12 +12,50 @@
     <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
 
     <style>
+        .weather-container {
+            position: relative;
+            display: inline-block;
+        }
+
         #weather {
-            height: 15%;
-            border-radius: 50%;
+            height: 23%;
             cursor: pointer;
-            margin-top: 3vh;
             margin-left: 13vw;
+        }
+
+        .weather-container .tooltip {
+            visibility: hidden;
+            width: 200px;
+            background-color: #f0f0f0;
+            color: #333;
+            text-align: center;
+            border-radius: 8px;
+            padding: 8px;
+            position: absolute;
+            bottom: 80%;
+            left: 35%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+            z-index: 1;
+        }
+
+        .weather-container .tooltip::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -6px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: #f0f0f0 transparent transparent transparent;
+        }
+
+        .weather-container:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
         }
 
         .container {
@@ -49,16 +87,24 @@
             overflow: hidden;
             height: 100%;
             width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-custom img{
+            height: 50vh;
         }
 
         .row {
             width: 100%;
         }
 
-
-        .card-custom:hover {
+        #cardPackage .card-custom:hover,
+        #cardActivity .card-custom:hover,
+        #cardEvent .card-custom:hover {
             transform: translateY(-8px);
             box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
+            cursor: pointer;
         }
 
         .card-img-top {
@@ -73,6 +119,7 @@
             margin: 0;
         }
 
+
         .cards h1 {
             font-size: 50px;
         }
@@ -81,19 +128,18 @@
             clip-path: polygon(0 0, 100% 0, 100% 95%, 73% 101%, 294% -90%, 90% 99%, -31% 89%, 57% 96%, 41% 94%, 22% 101%, 2% 95%, 9% 96%, 0 92%);
         }
 
-        #cardPackage {
+        #cardPackage, #cardActivity, #cardEvent {
             width: 27.333333%;
         }
 
         #cardsEvents {
+            display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             margin-top: -135vh;
         }
 
         .container.gallery-container {
-            /*
-                        min-height: 100vh;
-                        margin-left: 50vw; */
             display: flex;
             justify-content: center;
             align-items: center;
@@ -157,12 +203,10 @@
             border-radius: 8px;
         }
 
-        /* Optional: custom spans for wider images */
         .tz-gallery .wide {
             grid-column: span 2;
         }
 
-        /* Override bootstrap column paddings */
         .tz-gallery .row > div {
             padding: 2px;
         }
@@ -211,6 +255,26 @@
             body {
                 padding: 0;
             }
+        }
+
+        .map {
+            margin-top: -20%;
+            width: 100%;
+            height: 125vh;
+            background-image: url(http://127.0.0.1:8000/images/map.png);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: 1;
+            opacity: 0.7;
+            filter: brightness(112%) saturate(120%);
+        }
+
+        .map-overlay {
+            width: 100%;
+            height: 100%;
+            background: rgb(255 255 255 / 15%);
+            backdrop-filter: blur(15px);
         }
     </style>
 </head>
@@ -261,7 +325,10 @@
             и просечните температури се {{ $destination->prosechnatemp }} степени.
         </p>
 
-        <img id="weather" src="{{ asset('images/weather.jpg') }}">
+        <div class="weather-container">
+            <img id="weather" src="{{ asset('images/weather.png') }}" alt="Weather">
+            <div class="tooltip">Погледнете ја временската прогноза</div>
+        </div>
     </div>
 
 
@@ -316,32 +383,46 @@
 
 <div class="container" style="height: auto">
     <div id="cardsEvents" class="row">
-        <div id="cardPackage" class="col-md-4 col-sm-6 mb-4">
-            <div class="card-custom">
-                <img src="{{ asset('images/cards.jpg') }}" alt="Настани" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Настани</h5>
+
+        <div id="cardEvent" class="col-md-4 col-sm-6 mb-4">
+            <a href="{{ route('events.index', ['imelokacija' => $destination->imelokacija]) }}" class="text-decoration-none">
+                <div class="card-custom">
+                    <img src="{{ asset('images/nastani.png') }}" alt="Настани" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Настани</h5>
+                    </div>
                 </div>
-            </div>
+            </a>
+        </div>
+
+        <div id="cardActivity" class="col-md-4 col-sm-6 mb-4">
+            <a href="{{ route('activity.index', ['imelokacija' => $destination->imelokacija]) }}" class="text-decoration-none">
+                <div class="card-custom">
+                    <img src="{{ asset('images/aktivnosti.png') }}" alt="Активности" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Активности</h5>
+                    </div>
+                </div>
+            </a>
         </div>
 
         <div id="cardPackage" class="col-md-4 col-sm-6 mb-4">
-            <div class="card-custom">
-                <img src="{{ asset('images/cards.jpg') }}" alt="Активности" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Активности</h5>
+            <a href="{{ route('package.index', ['imelokacija' => $destination->imelokacija]) }}" class="text-decoration-none">
+                <div class="card-custom">
+                    <img src="{{ asset('images/paketi.png') }}" alt="Пакети" class="card-img-top">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Пакети</h5>
+                    </div>
                 </div>
-            </div>
+            </a>
         </div>
 
-        <div id="cardPackage" class="col-md-4 col-sm-6 mb-4">
-            <div class="card-custom">
-                <img src="{{ asset('images/cards.jpg') }}" alt="Пакети" class="card-img-top">
-                <div class="card-body text-center">
-                    <h5 class="card-title">Пакети</h5>
-                </div>
-            </div>
-        </div>
+    </div>
+</div>
+
+
+<div class="map">
+    <div class="map-overlay">
     </div>
 </div>
 

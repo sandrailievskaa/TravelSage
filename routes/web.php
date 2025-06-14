@@ -18,6 +18,10 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::resource('destinations', DestinationController::class)->only('index', 'show');
+Route::get('destinations/{imelokacija}/events', [DestinationController::class, 'events'])->name('events.index');
+Route::get('destinations/{imelokacija}/activities', [DestinationController::class, 'activities'])->name('activity.index');
+Route::get('destinations/{imelokacija}/packages', [DestinationController::class, 'packages'])->name('package.index');
+
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'store'])->name('login');

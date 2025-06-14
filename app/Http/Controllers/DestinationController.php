@@ -23,6 +23,26 @@ class DestinationController extends Controller
         return view('destinations/show', compact('destination'));
     }
 
+
+    public function events($imelokacija): View|Factory|Application
+    {
+        $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
+        return view('destinations.events', compact('destination'));
+    }
+
+    public function activities($imelokacija): View|Factory|Application
+    {
+        $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
+        return view('destinations.activity', compact('destination'));
+    }
+
+    public function packages($imelokacija): View|Factory|Application
+    {
+        $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
+        return view('destinations.package', compact('destination'));
+    }
+
+
     public function search(Request $request): Application|Factory|View
     {
         $tipovimesta = $request->input('tipovimesta');
