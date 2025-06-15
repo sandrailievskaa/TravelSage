@@ -11,28 +11,50 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
     <style>
         .cardsStyle {
-            display: inline-block;
-            float: right;
-            margin-top: 8%;
-            margin-right: 5%;
+            top: 10%;
+            right: 5%;
+            width: 30vw;
+            max-height: 70vh;
+            overflow-y: scroll;
+            padding-right: 10px;
+            z-index: 10;
+            margin-top: 7vh;
         }
 
+        .cardsStyle::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .cardsStyle::-webkit-scrollbar-thumb {
+            background: white;
+            border-radius: 4px;
+        }
+
+        .cardsStyle::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        #listCard {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 10px;
+        }
     </style>
 </head>
 <body>
 @include('navbar')
 
-<div class="carousel-inner">
+<div class="carousel-inner position-relative">
     <div class="carousel-item active">
         <img src="{{ asset('images/greece.jpg') }}" class="d-block w-100" alt="...">
     </div>
 
-    <div class="cardsStyle">
+    <div class="cardsStyle position-absolute">
         @if(isset($nastani) && $nastani->count())
             @foreach($nastani as $event)
-                <div class="card border-primary mb-3" style="max-width: 18rem;">
+                <div id="listCard" class="card mb-3">
                     <div class="card-header">{{ $event->naziv }}</div>
-                    <div class="card-body text-primary">
+                    <div class="card-body">
                         <h5 class="card-title">{{ $event->vidovi }}</h5>
                         <p class="card-text">{{ $event->detali }}</p>
                         <p class="card-text">
