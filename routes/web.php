@@ -23,7 +23,7 @@ Route::get('destinations/{imelokacija}/events', [DestinationController::class, '
 Route::get('destinations/{imelokacija}/activities', [DestinationController::class, 'activities'])->name('activity.index');
 Route::get('destinations/{imelokacija}/packages', [DestinationController::class, 'packages'])->name('package.index');
 
-Route::get('/destinations/{destination}/nastani', [EventController::class, 'travelEvents'])->name('travelEvents.index');
+Route::get('/destinations/{destination}/travel-events', [EventController::class, 'travelEvents'])->name('travelEvents.index');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
