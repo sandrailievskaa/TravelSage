@@ -9,6 +9,7 @@ use App\Http\Controllers\TravelActivityController;
 use App\Http\Controllers\TravelEventController;
 use App\Http\Controllers\TravelPackageController;
 use Illuminate\Support\Facades\Route;
+use \App\Http\Controllers\ActivityController;
 
 Route::get('/', function () {
     return view('index');
@@ -22,8 +23,8 @@ Route::resource('destinations', DestinationController::class)->only('index', 'sh
 Route::get('destinations/{imelokacija}/events', [DestinationController::class, 'events'])->name('events.index');
 Route::get('destinations/{imelokacija}/activities', [DestinationController::class, 'activities'])->name('activity.index');
 Route::get('destinations/{imelokacija}/packages', [DestinationController::class, 'packages'])->name('package.index');
-
 Route::get('/destinations/{destination}/travel-events', [EventController::class, 'travelEvents'])->name('travelEvents.index');
+Route::get('/destinations/{imelokacija}/travel-activities', [ActivityController::class, 'travelActivities'])->name('travelActivities.index');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

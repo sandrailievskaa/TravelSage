@@ -11,7 +11,7 @@ use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
-    public function travelEvents(Destination $destination)
+    public function travelEvents(Destination $destination): View|Factory|Application
     {
         $lokacija = $destination->imelokacija;
 
