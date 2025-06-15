@@ -10,6 +10,7 @@ use App\Http\Controllers\TravelEventController;
 use App\Http\Controllers\TravelPackageController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ActivityController;
+use \App\Http\Controllers\PackageController;
 
 Route::get('/', function () {
     return view('index');
@@ -25,6 +26,7 @@ Route::get('destinations/{imelokacija}/activities', [DestinationController::clas
 Route::get('destinations/{imelokacija}/packages', [DestinationController::class, 'packages'])->name('package.index');
 Route::get('/destinations/{destination}/travel-events', [EventController::class, 'travelEvents'])->name('travelEvents.index');
 Route::get('/destinations/{imelokacija}/travel-activities', [ActivityController::class, 'travelActivities'])->name('travelActivities.index');
+Route::get('/destinations/{imelokacija}/travel-packages', [PackageController::class, 'travelPackages'])->name('travelPackages.index');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

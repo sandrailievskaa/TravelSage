@@ -55,9 +55,9 @@
                 <div id="listCard" class="card mb-3">
                     <div class="card-header">{{ $aktivnost->imeaktivnost }}</div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ $aktivnost->informacii }}</h5>
+                        <h5 class="card-title">Краток опис: {{ $aktivnost->informacii }}</h5>
                         <p class="card-text">{{ $aktivnost->kategorija }}</p>
-                        <p class="card-text">{{ $aktivnost->iznos }}</p>
+                        <p class="card-text">Цена: {{ $aktivnost->iznos }}</p>
                     </div>
                 </div>
             @endforeach

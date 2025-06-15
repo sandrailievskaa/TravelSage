@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Настани</title>
+    <title>Пакети</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
@@ -44,28 +44,27 @@
 <body>
 @include('navbar')
 
-<div class="carousel-inner position-relative">
+<div class="carousel-inner">
     <div class="carousel-item active">
         <img src="{{ asset('images/greece.jpg') }}" class="d-block w-100" alt="...">
     </div>
 
     <div class="cardsStyle position-absolute">
-        @if(isset($nastani) && $nastani->count())
-            @foreach($nastani as $event)
+        @if(isset($paketi) && $paketi->count())
+            @foreach($paketi as $paket)
                 <div id="listCard" class="card mb-3">
-                    <div class="card-header">{{ $event->naziv }}</div>
+                    <div class="card-header">{{ $paket->imepaket }}</div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ $event->vidovi }}</h5>
-                        <p class="card-text">Детали за настанот: {{ $event->detali }}</p>
+                        <h5 class="card-title">Износ: {{ $paket->cena }}</h5>
                         <p class="card-text">
-                            <strong>Од:</strong> {{ $event->pochetendatum }}<br>
-                            <strong>До:</strong> {{ $event->kraendatum }}
+                            <strong>Од:</strong> {{ $paket->pochetok }}<br>
+                            <strong>До:</strong> {{ $paket->kraj }}
                         </p>
                     </div>
                 </div>
             @endforeach
         @else
-            <p>Нема настани за оваа локација.</p>
+            <p>Нема активности за оваа локација.</p>
         @endif
     </div>
 </div>

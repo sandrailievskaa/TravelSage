@@ -398,7 +398,7 @@
         </div>
 
         <div id="cardActivity" class="col-md-4 col-sm-6 mb-4">
-            <a href="{{ route('travelActivities.index', ['imelokacija' => $destination->preporachanasezona]) }}"
+            <a href="{{ route('travelActivities.index', ['imelokacija' => $destination->imelokacija]) }}"
                class="text-decoration-none">
                 <div class="card-custom">
                     <img src="{{ asset('images/aktivnosti.png') }}" alt="Активности" class="card-img-top">
@@ -410,7 +410,7 @@
         </div>
 
         <div id="cardPackage" class="col-md-4 col-sm-6 mb-4">
-            <a href="{{ route('package.index', ['imelokacija' => $destination->imelokacija]) }}"
+            <a href="{{ route('travelPackages.index', ['imelokacija' => $destination->imelokacija]) }}"
                class="text-decoration-none">
                 <div class="card-custom">
                     <img src="{{ asset('images/paketi.png') }}" alt="Пакети" class="card-img-top">
