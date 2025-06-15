@@ -47,5 +47,9 @@ class Destination extends Model
         return $this->belongsToMany(User::class, 'destinacii_has_korisnici', 'iddest', 'idkorisnik')
             ->withPivot(['ocena', 'komentar', 'datum']);
     }
+    public function getRouteKeyName(): string
+    {
+        return 'imelokacija';
+    }
 
 }

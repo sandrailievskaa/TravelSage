@@ -91,7 +91,7 @@
             z-index: 1;
         }
 
-        .card-custom img{
+        .card-custom img {
             height: 50vh;
         }
 
@@ -385,7 +385,9 @@
     <div id="cardsEvents" class="row">
 
         <div id="cardEvent" class="col-md-4 col-sm-6 mb-4">
-            <a href="{{ route('events.index', ['imelokacija' => $destination->imelokacija]) }}" class="text-decoration-none">
+            <a href="{{ route('travelEvents.index', ['destination' => $destination->imelokacija]) }}"
+               class="text-decoration-none">
+
                 <div class="card-custom">
                     <img src="{{ asset('images/nastani.png') }}" alt="Настани" class="card-img-top">
                     <div class="card-body text-center">
@@ -396,7 +398,8 @@
         </div>
 
         <div id="cardActivity" class="col-md-4 col-sm-6 mb-4">
-            <a href="{{ route('activity.index', ['imelokacija' => $destination->imelokacija]) }}" class="text-decoration-none">
+            <a href="{{ route('activity.index', ['imelokacija' => $destination->imelokacija]) }}"
+               class="text-decoration-none">
                 <div class="card-custom">
                     <img src="{{ asset('images/aktivnosti.png') }}" alt="Активности" class="card-img-top">
                     <div class="card-body text-center">
@@ -407,7 +410,8 @@
         </div>
 
         <div id="cardPackage" class="col-md-4 col-sm-6 mb-4">
-            <a href="{{ route('package.index', ['imelokacija' => $destination->imelokacija]) }}" class="text-decoration-none">
+            <a href="{{ route('package.index', ['imelokacija' => $destination->imelokacija]) }}"
+               class="text-decoration-none">
                 <div class="card-custom">
                     <img src="{{ asset('images/paketi.png') }}" alt="Пакети" class="card-img-top">
                     <div class="card-body text-center">

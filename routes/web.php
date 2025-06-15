@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DestinationController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\PreferencesController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\TravelActivityController;
@@ -21,6 +22,8 @@ Route::resource('destinations', DestinationController::class)->only('index', 'sh
 Route::get('destinations/{imelokacija}/events', [DestinationController::class, 'events'])->name('events.index');
 Route::get('destinations/{imelokacija}/activities', [DestinationController::class, 'activities'])->name('activity.index');
 Route::get('destinations/{imelokacija}/packages', [DestinationController::class, 'packages'])->name('package.index');
+
+Route::get('/destinations/{destination}/nastani', [EventController::class, 'travelEvents'])->name('travelEvents.index');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
