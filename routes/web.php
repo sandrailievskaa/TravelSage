@@ -11,6 +11,7 @@ use App\Http\Controllers\TravelPackageController;
 use Illuminate\Support\Facades\Route;
 use \App\Http\Controllers\ActivityController;
 use \App\Http\Controllers\PackageController;
+use \App\Http\Controllers\WeatherConditionController;
 
 Route::get('/', function () {
     return view('index');
@@ -27,6 +28,7 @@ Route::get('destinations/{imelokacija}/packages', [DestinationController::class,
 Route::get('/destinations/{destination}/travel-events', [EventController::class, 'travelEvents'])->name('travelEvents.index');
 Route::get('/destinations/{imelokacija}/travel-activities', [ActivityController::class, 'travelActivities'])->name('travelActivities.index');
 Route::get('/destinations/{imelokacija}/travel-packages', [PackageController::class, 'travelPackages'])->name('travelPackages.index');
+Route::get('/weather/{imelokacija}', [WeatherConditionController::class, 'show'])->name('weather.show');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

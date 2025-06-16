@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://rawgit.com/LeshikJanz/libraries/master/Bootstrap/baguetteBox.min.css">
 
     <style>
-        .weather-container {
+        .weather-container  #weather {
             position: relative;
             display: inline-block;
         }
@@ -326,7 +326,9 @@
         </p>
 
         <div class="weather-container">
-            <img id="weather" src="{{ asset('images/weather.png') }}" alt="Weather">
+            <a href="{{ route('weather.show', ['imelokacija' => $destination->imelokacija]) }}">
+                <img id="weather" src="{{ asset('images/weather.png') }}" alt="Weather">
+            </a>
             <div class="tooltip">Погледнете ја временската прогноза</div>
         </div>
     </div>
