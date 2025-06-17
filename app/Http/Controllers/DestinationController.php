@@ -7,6 +7,7 @@ use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DestinationController extends Controller
 {
@@ -41,6 +42,29 @@ class DestinationController extends Controller
         return view('destinations.package', compact('destination'));
     }
 
+    public function topLocationsCarousel(): View|Factory|Application
+    {
+        $locations = DB::table('travel_sage.destinacii')->pluck('imelokacija');
+
+        $locationCounts = [];
+
+        foreach ($locations as $location) {
+            $lowerLocation = mb_strtolower($location, 'UTF-8');
+
+            $count = DB::table('travel_sage.nastani')
+                ->whereRaw('LOWER(naziv) LIKE ?', ['%' . $lowerLocation . '%'])
+                ->orWhereRaw('LOWER(detali) LIKE ?', ['%' . $lowerLocation . '%'])
+                ->count();
+
+            $locationCounts[$location] = $count;
+        }
+
+        arsort($locationCounts);
+
+        $top5Locations = collect(array_slice($locationCounts, 0, 5, true));
+
+        return view('index', ['topLocations' => $top5Locations]);
+    }
 
     public function search(Request $request): Application|Factory|View
     {

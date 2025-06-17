@@ -13,9 +13,7 @@ use \App\Http\Controllers\ActivityController;
 use \App\Http\Controllers\PackageController;
 use \App\Http\Controllers\WeatherConditionController;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [DestinationController::class, 'topLocationsCarousel'])->name('home');
 
 Route::get('/login', function () {
     return view('login');
@@ -29,7 +27,6 @@ Route::get('/destinations/{destination}/travel-events', [EventController::class,
 Route::get('/destinations/{imelokacija}/travel-activities', [ActivityController::class, 'travelActivities'])->name('travelActivities.index');
 Route::get('/destinations/{imelokacija}/travel-packages', [PackageController::class, 'travelPackages'])->name('travelPackages.index');
 Route::get('/weather/{imelokacija}', [WeatherConditionController::class, 'show'])->name('weather.show');
-
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'store'])->name('login');
