@@ -40,6 +40,7 @@ class DestinationController extends Controller
         $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
         return view('destinations.package', compact('destination'));
     }
+
     public function home(): View|Factory|Application
     {
         $locations = DB::table('travel_sage.destinacii')->pluck('imelokacija');
@@ -102,6 +103,7 @@ class DestinationController extends Controller
 
         return view('explore', compact('topLocations', 'cheapActivities'));
     }
+
 
 
     public function search(Request $request): Application|Factory|View
