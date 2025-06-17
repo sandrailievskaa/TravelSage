@@ -124,7 +124,9 @@
     </div>
 </div>
 
+
 @include('carousel', ['topLocations' => $topLocations])
+@include('cheap', ['cheapActivities' => $cheapActivities])
 @include('footer')
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>

@@ -1,0 +1,1 @@
+@include('cheap', ['cheapActivities' => $cheapActivities])

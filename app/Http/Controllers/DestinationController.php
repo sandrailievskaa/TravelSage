@@ -13,7 +13,6 @@ class DestinationController extends Controller
 {
     public function index(): View|Factory|Application
     {
-        /*        $destinations = Destination::all()->unique('imelokacija');*/
         $destinations = Destination::all();
 
         return view('destinations/index', compact('destinations'));
@@ -41,11 +40,9 @@ class DestinationController extends Controller
         $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
         return view('destinations.package', compact('destination'));
     }
-
-    public function topLocationsCarousel(): View|Factory|Application
+    public function home(): View|Factory|Application
     {
         $locations = DB::table('travel_sage.destinacii')->pluck('imelokacija');
-
         $locationCounts = [];
 
         foreach ($locations as $location) {
@@ -60,11 +57,52 @@ class DestinationController extends Controller
         }
 
         arsort($locationCounts);
+        $topLocations = collect(array_slice($locationCounts, 0, 5, true));
 
-        $top5Locations = collect(array_slice($locationCounts, 0, 5, true));
+        $cheapActivities = DB::table('travel_sage.aktivnosti')
+            ->where('iznos', '<', 500)
+            ->get();
 
-        return view('index', ['topLocations' => $top5Locations]);
+        return view('home', compact('topLocations', 'cheapActivities'));
     }
+
+
+
+    /* public function showCheapActivities(): View
+    {
+        $cheapActivities = DB::table('travel_sage.aktivnosti')
+            ->where('iznos', '<', 500)
+            ->get();
+
+        return view('cheap', compact('cheapActivities'));
+    } */
+
+    public function explore(): View|Factory|Application
+    {
+        $locations = DB::table('travel_sage.destinacii')->pluck('imelokacija');
+        $locationCounts = [];
+
+        foreach ($locations as $location) {
+            $lowerLocation = mb_strtolower($location, 'UTF-8');
+
+            $count = DB::table('travel_sage.nastani')
+                ->whereRaw('LOWER(naziv) LIKE ?', ['%' . $lowerLocation . '%'])
+                ->orWhereRaw('LOWER(detali) LIKE ?', ['%' . $lowerLocation . '%'])
+                ->count();
+
+            $locationCounts[$location] = $count;
+        }
+
+        arsort($locationCounts);
+        $topLocations = collect(array_slice($locationCounts, 0, 5, true));
+
+        $cheapActivities = DB::table('travel_sage.aktivnosti')
+            ->where('iznos', '<', 500)
+            ->get();
+
+        return view('explore', compact('topLocations', 'cheapActivities'));
+    }
+
 
     public function search(Request $request): Application|Factory|View
     {
