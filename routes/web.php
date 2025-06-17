@@ -29,6 +29,7 @@ Route::get('/destinations/{imelokacija}/travel-packages', [PackageController::cl
 Route::get('/weather/{imelokacija}', [WeatherConditionController::class, 'show'])->name('weather.show');
 
 Route::get('/explore', [DestinationController::class, 'explore'])->name('explore');
+Route::get('/cheap-chart', [DestinationController::class, 'cheapActivitiesChart'])->name('cheap.chart');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
