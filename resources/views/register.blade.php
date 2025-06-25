@@ -48,7 +48,7 @@
     <div class="form-container">
         <h2>Регистрирај се</h2>
 
-        <form action="{{ route('login') }}" method="POST">
+        <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="form-group">
                 <input type="text" name="ime" class="form-control" placeholder="Име" required>

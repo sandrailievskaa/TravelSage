@@ -29,8 +29,9 @@ Route::get('/destinations/{destination}/travel-packages', [PackageController::cl
 Route::get('/weather/{imelokacija}', [WeatherConditionController::class, 'show'])->name('weather.show');
 
 
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'store'])->name('login');
+Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [AuthController::class, 'store'])->name('register');
+
 
 Route::get('/preferences', function () {
     return view('preferences');
