@@ -14,6 +14,28 @@ class AuthController extends Controller
         return view('register');
     }
 
+    public function showLoginForm()
+    {
+        return view('login');
+    }
+
+    public function login(Request $request)
+    {
+        $request->validate([
+            'eposhta' => 'required|email',
+        ]);
+
+        $korisnik = TravelSageUser::where('eposhta', $request->eposhta)->first();
+
+        if ($korisnik) {
+            $request->session()->put('korisnik_id', $korisnik->id);
+
+            return redirect()->route('preferences')->with('success', 'Успешно најавени!');
+        } else {
+            return back()->withErrors(['eposhta' => 'Корисникот не постои. Ве молиме регистрирајте се.']);
+        }
+    }
+
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
