@@ -83,10 +83,18 @@
 </ol>
 
 <div class="container">
-    <a href="{{ route('login') }}" class="button type--C">
+    <a href="{{ route('register') }}" class="button type--C">
         <div class="button__line"></div>
         <div class="button__line"></div>
         <span class="button__text">РЕГИСТРАЦИЈА</span>
+        <div class="button__drow1"></div>
+        <div class="button__drow2"></div>
+    </a>
+
+    <a href="{{ route('login') }}" class="button type--C">
+        <div class="button__line"></div>
+        <div class="button__line"></div>
+        <span class="button__text">НАЈАВА</span>
         <div class="button__drow1"></div>
         <div class="button__drow2"></div>
     </a>
