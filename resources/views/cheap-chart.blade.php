@@ -5,18 +5,15 @@
     <title>Процент на евтини активности</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
-        body {
-            padding: 40px;
-            margin: 0;
-        }
-
-        .container {
+        .containerDestination {
             display: flex;
             justify-content: center;
             align-items: center;
             gap: 50px;
-            max-width: 1000px;
-            margin: 0 auto;
+            margin-bottom: 15vh;
+            width: 80%;
+            margin-left: 10vw;
+            margin-top: 5vh;
         }
 
         .text-area {
@@ -37,26 +34,10 @@
             background: linear-gradient(135deg, #e0f7f4, #b0e4dc);
             padding: 15px;
         }
-
-        @media (max-width: 800px) {
-            .container {
-                flex-direction: column;
-                gap: 30px;
-            }
-
-            canvas#cheapChart {
-                width: 90% !important;
-                height: auto !important;
-            }
-
-            .text-area {
-                text-align: center;
-            }
-        }
     </style>
 </head>
 <body>
-<div class="container">
+<div class="containerDestination">
     <div class="text-area">
         <h2>Дестинации со најголем процент на достапни (евтини) активности</h2>
         <p>Ова е приказ на процентот евтини активности по дестинација. Графикот покажува колку од активностите во

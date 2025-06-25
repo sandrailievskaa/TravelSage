@@ -9,7 +9,7 @@ class SearchController extends Controller
 {
     public function index(): \Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
-        $results = collect([]); // Празен резултат по дефиниција
+        $results = collect([]);
 
         return view('destinations.search', compact('results'));
     }

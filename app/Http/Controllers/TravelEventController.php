@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TravelEventRequest;
 use App\Models\TravelEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TravelEventController extends Controller
 {
@@ -22,15 +23,17 @@ class TravelEventController extends Controller
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $validatedData = $request->validate([
-            'naziv' => 'required|string|max:255',
-            'vidovi' => 'required|string|max:255',
-            'detali' => 'nullable|string',
-            'pochetendatum' => 'required|date',
-            'kraendatum' => 'required|date',
-        ]);
+        DB::transaction(function () use ($request) {
+            $validatedData = $request->validate([
+                'naziv' => 'required|string|max:255',
+                'vidovi' => 'required|string|max:255',
+                'detali' => 'nullable|string',
+                'pochetendatum' => 'required|date',
+                'kraendatum' => 'required|date',
+            ]);
 
-        TravelEvent::create($validatedData);
+            TravelEvent::create($validatedData);
+        });
 
         return redirect()->route('travel-events.index')->with('success', 'Настанот е успешно креиран!');
     }

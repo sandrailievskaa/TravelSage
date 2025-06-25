@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TravelActivityRequest;
 use App\Models\TravelActivity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TravelActivityController extends Controller
 {
@@ -22,14 +23,16 @@ class TravelActivityController extends Controller
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $validatedData = $request->validate([
-            'imeaktivnost' => 'required|string|max:255',
-            'informacii' => 'nullable|string|max:255',
-            'kategorija' => 'required|string|max:255',
-            'iznos' => 'nullable|numeric',
-        ]);
+        DB::transaction(function () use ($request) {
+            $validatedData = $request->validate([
+                'imeaktivnost' => 'required|string|max:255',
+                'informacii' => 'nullable|string|max:255',
+                'kategorija' => 'required|string|max:255',
+                'iznos' => 'nullable|numeric',
+            ]);
 
-        TravelActivity::create($validatedData);
+            TravelActivity::create($validatedData);
+        });
 
         return redirect()->route('travel-activities.index')->with('success', 'Активноста е успешно креирана!');
     }

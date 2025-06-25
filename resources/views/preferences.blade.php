@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
 </head>
 <body>
+
 @if (session('success'))
     <div class="alert alert-success">
         {{ session('success') }}
@@ -51,48 +52,45 @@
     </button>
 </div>
 
-
 <div class="wrapper">
     <div class="form-container">
         <h2>Пронајдете ја вашата идеална дестинација</h2>
-        <form>
+
+        <form method="GET" action="{{ route('destinations.index') }}">
             <div class="form-group">
                 <select id="typeDest" name="tipovimesta" class="form-control">
                     <option value="" disabled selected>Тип на место</option>
-                    <option value="allDest">Сите</option>
-                    <option value="exotic">Егзотични дестинации</option>
-                    <option value="rural">Рурални дестинации</option>
-                    <option value="sea">Море</option>
-                    <option value="mountain">Планина</option>
-                    <option value="lake">Езеро</option>
-                    <option value="history">Историја</option>
-                    <option value="beach">Плажа</option>
-                    <option value="city">Град</option>
-                    <option value="village">Село</option>
+                    <option value="any">Сите</option>
+                    <option value="море">Море</option>
+                    <option value="планина">Планина</option>
+                    <option value="езеро">Езеро</option>
+                    <option value="историја">Историја</option>
+                    <option value="плажа">Плажа</option>
+                    <option value="град">Град</option>
+                    <option value="село">Село</option>
                 </select>
-            </div>
-            <div class="form-group">
-                <input type="number" id="first-name" class="form-control" placeholder="Приоритет" min="1" max="10">
             </div>
             <div class="form-group">
                 <select id="season" name="preporachanasezona" class="form-control">
                     <option value="" disabled selected>Посакувана сезона</option>
-                    <option value="allSeasons">Сите</option>
-                    <option value="spring">Пролет</option>
-                    <option value="summer">Лето</option>
-                    <option value="autumn">Есен</option>
-                    <option value="winter">Зима</option>
+                    <option value="any">Сите</option>
+                    <option value="пролет">Пролет</option>
+                    <option value="лето">Лето</option>
+                    <option value="есен">Есен</option>
+                    <option value="зима">Зима</option>
                 </select>
             </div>
             <div class="form-group">
-                <select id="filter" name="filter" class="form-control">
-                    <option value="" disabled selected>Филтер</option>
-                    <option value="season">Сезона</option>
-                    <option value="popularity">Популарност</option>
-                    <option value="typeDest">Тип на место</option>
+                <select id="popularnost" name="popularnost" class="form-control">
+                    <option value="" disabled selected>Популарност</option>
+                    <option value="1-2">1-2</option>
+                    <option value="3-4">3-4</option>
+                    <option value="5-6">5-6</option>
+                    <option value="7-8">7-8</option>
+                    <option value="9-10">9-10</option>
                 </select>
             </div>
-            <button type="submit" class="btn">Во ред</button>
+            <button type="submit" class="btn mt-3">Во ред</button>
         </form>
     </div>
 </div>

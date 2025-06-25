@@ -14,6 +14,9 @@
         html {
             scroll-behavior: smooth;
         }
+        ol{
+            margin-top: 0 !important;
+        }
     </style>
 </head>
 <body>
@@ -127,6 +130,7 @@
 
 @include('carousel', ['topLocations' => $topLocations])
 @include('cheap', ['cheapActivities' => $cheapActivities])
+@include('cheap-chart', ['data' => $data])
 @include('footer')
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>

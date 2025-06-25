@@ -24,12 +24,9 @@ Route::get('destinations/{imelokacija}/events', [DestinationController::class, '
 Route::get('destinations/{imelokacija}/activities', [DestinationController::class, 'activities'])->name('activity.index');
 Route::get('destinations/{imelokacija}/packages', [DestinationController::class, 'packages'])->name('package.index');
 Route::get('/destinations/{destination}/travel-events', [EventController::class, 'travelEvents'])->name('travelEvents.index');
-Route::get('/destinations/{imelokacija}/travel-activities', [ActivityController::class, 'travelActivities'])->name('travelActivities.index');
-Route::get('/destinations/{imelokacija}/travel-packages', [PackageController::class, 'travelPackages'])->name('travelPackages.index');
+Route::get('/destinations/{destination}/travel-activities', [ActivityController::class, 'travelActivities'])->name('travelActivities.index');
+Route::get('/destinations/{destination}/travel-packages', [PackageController::class, 'travelPackages'])->name('travelPackages.index');
 Route::get('/weather/{imelokacija}', [WeatherConditionController::class, 'show'])->name('weather.show');
-
-Route::get('/explore', [DestinationController::class, 'explore'])->name('explore');
-Route::get('/cheap-chart', [DestinationController::class, 'cheapActivitiesChart'])->name('cheap.chart');
 
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');

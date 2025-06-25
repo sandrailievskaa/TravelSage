@@ -12,9 +12,9 @@ class ActivityController extends Controller
 {
     public function travelActivities(Destination $destination): View|Factory|Application
     {
-        $sezona = strtolower($destination->preporachanasezona);
-
-        $aktivnosti = TravelActivity::whereRaw("LOWER(kategorija) LIKE ?", ["%{$sezona}%"])->get();
+        $aktivnosti = TravelActivity::query()
+            ->whereLike('aktivnosti', "%$destination->preporachanasezona%")
+            ->get();
 
         return view('destinations.activities', compact('destination', 'aktivnosti'));
     }

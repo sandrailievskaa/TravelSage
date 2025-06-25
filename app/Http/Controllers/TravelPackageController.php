@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TravelPackageRequest;
 use App\Models\TravelPackage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TravelPackageController extends Controller
 {
@@ -21,14 +22,16 @@ class TravelPackageController extends Controller
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $validatedData = $request->validate([
-            'imepaket' => 'required|string|max:255',
-            'cena' => 'required|numeric',
-            'pochetok' => 'required|date_format:Y-m-d\TH:i',
-            'kraj' => 'required|date_format:Y-m-d\TH:i|after_or_equal:pochetok',
-        ]);
+        DB::transaction(function () use ($request) {
+            $validatedData = $request->validate([
+                'imepaket' => 'required|string|max:255',
+                'cena' => 'required|numeric',
+                'pochetok' => 'required|date_format:Y-m-d\TH:i',
+                'kraj' => 'required|date_format:Y-m-d\TH:i|after_or_equal:pochetok',
+            ]);
 
-        TravelPackage::create($validatedData);
+            TravelPackage::create($validatedData);
+        });
 
         return redirect()->route('travel-packages.index')->with('success', 'Пакетот е успешно креиран!');
     }

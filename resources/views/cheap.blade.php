@@ -1,151 +1,140 @@
-<!DOCTYPE html>
-<html lang="mk">
-<head>
-    <meta charset="UTF-8"/>
-    <title>Евтини активности</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
-        @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+    @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
-        body {
-            font-size: 16px;
-            font-weight: normal;
-            margin: 0;
+    a, a:hover {
+        text-decoration: none;
+        transition: color 0.3s ease-in-out;
+        color: #064937 !important;
+    }
+
+    a:hover {
+        color: #89d6ca !important;
+    }
+
+    #pageHeaderTitle {
+        margin: 2rem 0;
+        text-align: center;
+        font-size: 2.5rem;
+        color: #074f44 !important;
+    }
+
+    .postcard {
+        display: flex;
+        border-radius: 10px;
+        margin-bottom: 2rem;
+        box-shadow: 0 5px 20px rgba(48, 176, 156, 0.4);
+        background: linear-gradient(135deg, rgba(158, 207, 195, 0.49) 0%, rgba(168, 222, 217, 0.36) 100%);
+        color: #074f44 !important;
+        transition: box-shadow 0.3s ease;
+    }
+
+    @media screen and (min-width: 769px) {
+        .postcard:nth-child(2n+1) {
+            flex-direction: row;
         }
 
-        a, a:hover {
-            text-decoration: none;
-            transition: color 0.3s ease-in-out;
-            color: #064937; /* темно-зелена */
+        .postcard:nth-child(2n) {
+            flex-direction: row-reverse;
         }
+    }
 
-        a:hover {
-            color: #89d6ca;
-        }
+    .postcard:hover {
+        box-shadow: 0 8px 30px rgba(48, 176, 156, 0.7);
+    }
 
-        #pageHeaderTitle {
-            margin: 2rem 0;
-            text-transform: uppercase;
-            text-align: center;
-            font-size: 2.5rem;
-            color: #074f44;
-        }
+    .postcard__img {
+        width: 330px;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        height: 270px;
+        object-position: center;
+        display: block;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: auto;
-            padding: 40px 20px;
-        }
+    .postcard:hover .postcard__img {
+        transform: scale(1.1);
+    }
 
-        .postcard {
-            display: flex;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-            box-shadow: 0 5px 20px rgba(48, 176, 156, 0.4);
-            background: linear-gradient(135deg, rgba(158, 207, 195, 0.49) 0%, rgba(168, 222, 217, 0.36) 100%);
-            color: #074f44;
-            transition: box-shadow 0.3s ease;
-        }
+    .postcard__text {
+        padding: 2rem 3rem;
+        flex: 1;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
 
-        @media screen and (min-width: 769px) {
-            .postcard:nth-child(2n+1) {
-                flex-direction: row;
-            }
+    .postcard__title {
+        font-size: 1.75rem;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        color: #064937;
+    }
 
-            .postcard:nth-child(2n) {
-                flex-direction: row-reverse;
-            }
-        }
+    .postcard__bar {
+        width: 50px;
+        height: 6px;
+        border-radius: 5px;
+        background-color: #30b09c;
+        margin: 10px 0 20px 0;
+        transition: width 0.3s ease;
+    }
 
-        .postcard:hover {
-            box-shadow: 0 8px 30px rgba(48, 176, 156, 0.7);
-        }
+    .postcard:hover .postcard__bar {
+        width: 100px;
+    }
 
-        .postcard__img {
-            width: 330px;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-            height: 270px;
-            object-position: center;
-            display: block;
-        }
+    .postcard__preview-txt {
+        font-size: 1rem;
+        line-height: 1.5;
+        color: #064937;
+        text-align: justify;
+        flex-grow: 1;
+    }
 
-        .postcard:hover .postcard__img {
-            transform: scale(1.1);
-        }
+    .postcard__tagbox {
+        margin-top: 20px;
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
 
-        .postcard__text {
-            padding: 2rem 3rem;
-            flex: 1;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
+    .tag__item {
+        background-color: rgba(48, 176, 156, 0.2);
+        color: #064937;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-size: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        user-select: none;
+        transition: background-color 0.3s;
+        cursor: default;
+    }
 
-        .postcard__title {
-            font-size: 1.75rem;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: #064937;
-        }
+    .tag__item:hover {
+        background-color: rgba(48, 176, 156, 0.5);
+    }
 
-        .postcard__bar {
-            width: 50px;
-            height: 6px;
-            border-radius: 5px;
-            background-color: #30b09c;
-            margin: 10px 0 20px 0;
-            transition: width 0.3s ease;
-        }
+    i.fas {
+        color: #30b09c;
+    }
 
-        .postcard:hover .postcard__bar {
-            width: 100px;
-        }
+    #pageHeaderTitle{
+        padding-bottom: 5vh;
+    }
 
-        .postcard__preview-txt {
-            font-size: 1rem;
-            line-height: 1.5;
-            color: #064937;
-            text-align: justify;
-            flex-grow: 1;
-        }
+    .containerCheap{
+        width: 80%;
+        margin-left: 10vw;
+        margin-top: -22vh;
+    }
 
-        .postcard__tagbox {
-            margin-top: 20px;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
+</style>
 
-        .tag__item {
-            background-color: rgba(48, 176, 156, 0.2);
-            color: #064937;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            user-select: none;
-            transition: background-color 0.3s;
-            cursor: default;
-        }
-
-        .tag__item:hover {
-            background-color: rgba(48, 176, 156, 0.5);
-        }
-
-        i.fas {
-            color: #30b09c;
-        }
-
-    </style>
-</head>
-<body>
-<div class="container">
+<div class="containerCheap">
     <h1 id="pageHeaderTitle">Активности под 500 денари</h1>
 
     @php
@@ -179,5 +168,3 @@
     @endforeach
 
 </div>
-</body>
-</html>

@@ -85,16 +85,18 @@
         }
 
         .carousel-inner {
-            margin-right: 10vw;
+            margin-right: 0;
+            margin-bottom: 80px;
         }
+
     </style>
 </head>
 <body>
 <div class="container mt-5">
     <h2 class="mb-4 text-center" style="padding-bottom: 5vh;
-    padding-top: 10vh;">Топ 5 дестинации со најмногу организирани настани</h2>
+    padding-top: 20vh;">Топ 5 дестинации со најмногу организирани настани</h2>
 
-    <div id="locationsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500">
+    <div id="locationsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
         @php
             $locations = collect($topLocations);
             $chunks = $locations->chunk(3);
