@@ -2,13 +2,14 @@
     @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
     @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 
-    a, a:hover {
+    .containerCheap a,
+    .containerCheap a:hover {
         text-decoration: none;
         transition: color 0.3s ease-in-out;
         color: #064937 !important;
     }
 
-    a:hover {
+    .containerCheap a:hover {
         color: #89d6ca !important;
     }
 
