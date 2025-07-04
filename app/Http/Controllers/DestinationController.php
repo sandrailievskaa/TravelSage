@@ -86,30 +86,6 @@ class DestinationController extends Controller
 
 
 
-    /* public function showCheapActivities(): View
-    {
-        $cheapActivities = DB::table('travel_sage.aktivnosti')
-            ->where('iznos', '<', 500)
-            ->get();
-
-        return view('cheap', compact('cheapActivities'));
-    } */
-
-    public function cheapActivitiesChart(): \Illuminate\Contracts\View\View
-    {
-        $data = DB::table('travel_sage.destinacii as d')
-            ->join('travel_sage.aktivnosti as a', 'd.iddest', '=', 'a.iddest')
-            ->select('d.imelokacija',
-                DB::raw('COUNT(CASE WHEN a.iznos < 500 THEN 1 END) * 100.0 / COUNT(*) as procent_cheap')
-            )
-            ->groupBy('d.iddest', 'd.imelokacija')
-            ->orderByDesc('procent_cheap')
-            ->get();
-
-        return view('cheap-chart', compact('data'));
-    }
-
-
     public function search(Request $request): Application|Factory|View
     {
         $tipovimesta = $request->input('tipovimesta');
