@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TravelSageUser;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -48,8 +46,8 @@ class AuthController extends Controller
 
         $korisnik = TravelSageUser::where('eposhta', $request->eposhta)->first();
 
-        if (!$korisnik) {
-            $korisnik = new TravelSageUser();
+        if (! $korisnik) {
+            $korisnik = new TravelSageUser;
             $korisnik->ime = $request->ime;
             $korisnik->prezime = $request->prezime;
             $korisnik->eposhta = $request->eposhta;
@@ -60,5 +58,4 @@ class AuthController extends Controller
 
         return redirect()->route('preferences')->with('success', 'Успешно сте најавени!');
     }
-
 }

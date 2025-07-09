@@ -4,19 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TravelActivityRequest;
 use App\Models\TravelActivity;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class TravelActivityController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function index(): View|Factory|Application
     {
         $travelActivities = TravelActivity::all();
 
         return view('travel-activities/index', compact('travelActivities'));
     }
 
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function create(): View|Factory|Application
     {
         return view('travel-activities.create');
     }
@@ -37,7 +40,7 @@ class TravelActivityController extends Controller
         return redirect()->route('travel-activities.index')->with('success', 'Активноста е успешно креирана!');
     }
 
-    public function edit(TravelActivity $travelActivity): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function edit(TravelActivity $travelActivity): View|Factory|Application
     {
         return view('travel-activities/edit', compact('travelActivity'));
     }
@@ -52,7 +55,7 @@ class TravelActivityController extends Controller
     public function destroy(TravelActivity $travelActivity): \Illuminate\Http\RedirectResponse
     {
         $travelActivity->delete();
+
         return redirect()->route('travel-activities.index')->with('success', 'Активноста е успешно избришана!');
     }
-
 }

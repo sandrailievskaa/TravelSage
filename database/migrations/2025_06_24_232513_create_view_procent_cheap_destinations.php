@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
@@ -12,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement("
+        DB::statement('
             CREATE VIEW view_procent_cheap_destinations AS
             SELECT
                 d.imelokacija,
@@ -21,7 +20,7 @@ return new class extends Migration
             JOIN travel_sage.aktivnosti a ON d.iddest = a.iddest
             GROUP BY d.iddest, d.imelokacija
             ORDER BY procent_cheap DESC
-        ");
+        ');
     }
 
     /**

@@ -4,18 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TravelPackageRequest;
 use App\Models\TravelPackage;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class TravelPackageController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function index(): View|Factory|Application
     {
         $travelPackages = TravelPackage::all();
+
         return view('travel-packages.index', compact('travelPackages'));
     }
 
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function create(): View|Factory|Application
     {
         return view('travel-packages.create');
     }
@@ -36,7 +40,7 @@ class TravelPackageController extends Controller
         return redirect()->route('travel-packages.index')->with('success', 'Пакетот е успешно креиран!');
     }
 
-    public function edit(TravelPackage $travelPackage): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function edit(TravelPackage $travelPackage): View|Factory|Application
     {
         return view('travel-packages.edit', compact('travelPackage'));
     }
@@ -51,6 +55,7 @@ class TravelPackageController extends Controller
     public function destroy(TravelPackage $travelPackage): \Illuminate\Http\RedirectResponse
     {
         $travelPackage->delete();
+
         return redirect()->route('travel-packages.index')->with('success', 'Пакетот е успешно избришан!');
     }
 }

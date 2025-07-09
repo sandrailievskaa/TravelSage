@@ -4,19 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TravelEventRequest;
 use App\Models\TravelEvent;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
+use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class TravelEventController extends Controller
 {
-    public function index(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function index(): View|Factory|Application
     {
         $travelEvents = TravelEvent::all();
 
         return view('travel-events/index', compact('travelEvents'));
     }
 
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function create(): View|Factory|Application
     {
         return view('travel-events.create');
     }
@@ -38,7 +41,7 @@ class TravelEventController extends Controller
         return redirect()->route('travel-events.index')->with('success', 'Настанот е успешно креиран!');
     }
 
-    public function edit(TravelEvent $travelEvent): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
+    public function edit(TravelEvent $travelEvent): View|Factory|Application
     {
         return view('travel-events/edit', compact('travelEvent'));
     }
@@ -53,6 +56,7 @@ class TravelEventController extends Controller
     public function destroy(TravelEvent $travelEvent): \Illuminate\Http\RedirectResponse
     {
         $travelEvent->delete();
+
         return redirect()->route('travel-events.index')->with('success', 'Настанот е успешно избришан!');
     }
 }

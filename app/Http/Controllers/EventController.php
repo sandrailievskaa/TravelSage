@@ -7,7 +7,6 @@ use App\Models\TravelEvent;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
@@ -21,5 +20,4 @@ class EventController extends Controller
 
         return view('destinations.events', compact('destination', 'nastani'));
     }
-
 }

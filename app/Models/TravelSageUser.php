@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -10,6 +9,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 class TravelSageUser extends Model
 {
     protected $table = 'travel_sage.korisnici';
+
     public $timestamps = false;
 
     protected $primaryKey = 'idkorisnik';
@@ -34,6 +34,4 @@ class TravelSageUser extends Model
         return $this->belongsToMany(Destination::class, 'destinacii_has_korisnici', 'idkorisnik', 'iddest')
             ->withPivot(['ocena', 'komentar', 'datum']);
     }
-
-
 }

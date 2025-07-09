@@ -17,5 +17,4 @@ class Tag extends Model
     {
         return $this->belongsToMany(Destination::class, 'destinacii_has_tagovi', 'idtag', 'iddest');
     }
-
 }

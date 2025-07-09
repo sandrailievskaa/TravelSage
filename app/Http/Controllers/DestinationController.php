@@ -24,6 +24,7 @@ class DestinationController extends Controller
             ->when($season && $season !== 'any', fn ($query) => $query->where('preporachanasezona', $season))
             ->when($popularity, function (Builder $query) use ($popularity) {
                 $popularnost = explode('-', $popularity);
+
                 return $query->whereBetween('popularnost', [$popularnost[0], $popularnost[1]]);
             })
             ->when($type && $type !== 'any', fn ($query) => $query->where('tipovimesta', 'like', "%$type%"))
@@ -37,24 +38,6 @@ class DestinationController extends Controller
         return view('destinations/show', compact('destination'));
     }
 
-    public function events($imelokacija): View|Factory|Application
-    {
-        $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
-        return view('destinations.events', compact('destination'));
-    }
-
-    public function activities($imelokacija): View|Factory|Application
-    {
-        $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
-        return view('destinations.activity', compact('destination'));
-    }
-
-    public function packages($imelokacija): View|Factory|Application
-    {
-        $destination = Destination::where('imelokacija', $imelokacija)->firstOrFail();
-        return view('destinations.package', compact('destination'));
-    }
-
     public function home(): View|Factory|Application
     {
         $locations = DB::table('travel_sage.destinacii')->pluck('imelokacija');
@@ -64,8 +47,8 @@ class DestinationController extends Controller
             $lowerLocation = mb_strtolower($location, 'UTF-8');
 
             $count = DB::table('travel_sage.nastani')
-                ->whereRaw('LOWER(naziv) LIKE ?', ['%' . $lowerLocation . '%'])
-                ->orWhereRaw('LOWER(detali) LIKE ?', ['%' . $lowerLocation . '%'])
+                ->whereRaw('LOWER(naziv) LIKE ?', ['%'.$lowerLocation.'%'])
+                ->orWhereRaw('LOWER(detali) LIKE ?', ['%'.$lowerLocation.'%'])
                 ->count();
 
             $locationCounts[$location] = $count;
@@ -80,40 +63,6 @@ class DestinationController extends Controller
 
         $data = ViewProcentCheapDestination::all();
 
-
         return view('home', compact('topLocations', 'cheapActivities', 'data'));
     }
-
-
-
-    public function search(Request $request): Application|Factory|View
-    {
-        $tipovimesta = $request->input('tipovimesta');
-        $preporachanasezona = $request->input('preporachanasezona');
-        $filter = $request->input('filter');
-
-        $destinations = Destination::query();
-
-        if ($tipovimesta && $tipovimesta !== 'allDest') {
-            $destinations->where('tipovimesta', $tipovimesta);
-        }
-
-        if ($preporachanasezona && $preporachanasezona !== 'allSeasons') {
-            $destinations->where('preporachanasezona', $preporachanasezona);
-        }
-
-        if ($filter === 'popularnost') {
-            $destinations->orderBy('popularnost', 'desc');
-        } elseif ($filter === 'season') {
-            $destinations->orderBy('preporachanasezona');
-        } elseif ($filter === 'typeDest') {
-            $destinations->orderBy('tipovimesta');
-        }
-
-        $results = $destinations->get();
-
-        return view('search', compact('results'));
-    }
-
-
 }

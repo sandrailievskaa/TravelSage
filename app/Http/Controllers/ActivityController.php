@@ -7,7 +7,7 @@ use App\Models\TravelActivity;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
-use Illuminate\Http\Request;
+
 class ActivityController extends Controller
 {
     public function travelActivities(Destination $destination): View|Factory|Application
@@ -19,4 +19,3 @@ class ActivityController extends Controller
         return view('destinations.activities', compact('destination', 'aktivnosti'));
     }
 }
-
