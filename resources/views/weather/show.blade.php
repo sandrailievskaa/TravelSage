@@ -188,7 +188,7 @@
         </div>
     </div>
     @endforeach
-</div> <!-- Затвора последниот .row -->
+</div>
 
 </div>
 

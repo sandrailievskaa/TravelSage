@@ -16,28 +16,28 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Име</label>
-            <input type="text" name="naziv" value="{{ $travelEvent->naziv }}" class="w-full border px-4 py-2 rounded">
+            <input type="text" name="event_name" value="{{ $travelEvent->event_name }}" class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Тип</label>
-            <input type="text" name="vidovi" value="{{ $travelEvent->vidovi }}" class="w-full border px-4 py-2 rounded">
+            <input type="text" name="event_type" value="{{ $travelEvent->event_type }}" class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Детали</label>
-            <textarea name="detali" class="w-full border px-4 py-2 rounded">{{ $travelEvent->detali }}</textarea>
+            <textarea name="details" class="w-full border px-4 py-2 rounded">{{ $travelEvent->details }}</textarea>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Почетен датум</label>
-            <input type="date" name="pochetendatum" value="{{ $travelEvent->pochetendatum }}"
+            <input type="date" name="start_date" value="{{ $travelEvent->start_date }}"
                    class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Краен датум</label>
-            <input type="date" name="kraendatum" value="{{ $travelEvent->kraendatum }}"
+            <input type="date" name="end_date" value="{{ $travelEvent->end_date }}"
                    class="w-full border px-4 py-2 rounded">
         </div>
 

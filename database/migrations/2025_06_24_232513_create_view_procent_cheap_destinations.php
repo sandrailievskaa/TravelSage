@@ -14,11 +14,11 @@ return new class extends Migration
         DB::statement('
             CREATE VIEW view_procent_cheap_destinations AS
             SELECT
-                d.imelokacija,
-                COUNT(CASE WHEN a.iznos < 500 THEN 1 END) * 100.0 / COUNT(*) AS procent_cheap
-            FROM travel_sage.destinacii d
-            JOIN travel_sage.aktivnosti a ON d.iddest = a.iddest
-            GROUP BY d.iddest, d.imelokacija
+                d.location_name,
+                COUNT(CASE WHEN a.amount < 500 THEN 1 END) * 100.0 / COUNT(*) AS procent_cheap
+            FROM travel_sage.destination d
+            JOIN travel_sage.activity a ON d.id_destination = a.id_destination
+            GROUP BY d.id_destination, d.location_name
             ORDER BY procent_cheap DESC
         ');
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('view_procent_cheap_destinations');
+        DB::statement('DROP VIEW IF EXISTS view_procent_cheap_destinations');
     }
 };

@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Tag extends Model
 {
-    protected $table = 'travel_sage.tagovi';
+    protected $table = 'travel_sage.tag';
 
-    protected $primaryKey = 'idtag';
+    protected $primaryKey = 'id_tag';
 
     public $timestamps = false;
 
-    public function destinations(): BelongsToMany
+    public function destination(): BelongsToMany
     {
-        return $this->belongsToMany(Destination::class, 'destinacii_has_tagovi', 'idtag', 'iddest');
+        return $this->belongsToMany(Destination::class, 'destination_tag', 'id_tag', 'id_destination');
     }
 }

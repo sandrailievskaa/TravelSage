@@ -28,10 +28,10 @@ class TravelActivityController extends Controller
     {
         DB::transaction(function () use ($request) {
             $validatedData = $request->validate([
-                'imeaktivnost' => 'required|string|max:255',
-                'informacii' => 'nullable|string|max:255',
-                'kategorija' => 'required|string|max:255',
-                'iznos' => 'nullable|numeric',
+                'activity_name' => 'required|string|max:255',
+                'information' => 'nullable|string|max:255',
+                'category' => 'required|string|max:255',
+                'amount' => 'nullable|numeric',
             ]);
 
             TravelActivity::create($validatedData);

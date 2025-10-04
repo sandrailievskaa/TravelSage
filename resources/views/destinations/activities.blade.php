@@ -50,14 +50,14 @@
     </div>
 
     <div class="cardsStyle position-absolute">
-        @if(isset($aktivnosti) && $aktivnosti->count())
-            @foreach($aktivnosti as $aktivnost)
+        @if(isset($activities) && $activities->count())
+            @foreach($activities as $activity)
                 <div id="listCard" class="card mb-3">
-                    <div class="card-header">{{ $aktivnost->imeaktivnost }}</div>
+                    <div class="card-header">{{ $activity->activity_name }}</div>
                     <div class="card-body">
-                        <h5 class="card-title">Краток опис: {{ $aktivnost->informacii }}</h5>
-                        <p class="card-text">{{ $aktivnost->kategorija }}</p>
-                        <p class="card-text">Цена: {{ $aktivnost->iznos }}</p>
+                        <h5 class="card-title">Краток опис: {{ $activity->information }}</h5>
+                        <p class="card-text">{{ $activity->category }}</p>
+                        <p class="card-text">Цена: {{ $activity->amount }}</p>
                     </div>
                 </div>
             @endforeach

@@ -30,11 +30,11 @@
         <tbody>
         @foreach ($travelActivities as $activity)
             <tr class="border">
-                <td class="border px-4 py-2">{{ $activity->idaktivnost }}</td>
-                <td class="border px-4 py-2">{{ $activity->imeaktivnost }}</td>
-                <td class="border px-4 py-2">{{ $activity->informacii }}</td>
-                <td class="border px-4 py-2">{{ $activity->kategorija }}</td>
-                <td class="border px-4 py-2">{{ $activity->iznos }}</td>
+                <td class="border px-4 py-2">{{ $activity->id_activity }}</td>
+                <td class="border px-4 py-2">{{ $activity->activity_name }}</td>
+                <td class="border px-4 py-2">{{ $activity->information }}</td>
+                <td class="border px-4 py-2">{{ $activity->category }}</td>
+                <td class="border px-4 py-2">{{ $activity->amount }}</td>
                 <td class="border px-4 py-2">
                     <a href="{{ route('travel-activities.edit', $activity) }}" class="text-blue-500">Измени</a>
                     <form action="{{ route('travel-activities.destroy', $activity) }}" method="POST"

@@ -315,18 +315,18 @@
 
 <div>
     <div class="cards">
-        <h1>{{ $destination->imelokacija }}</h1>
-        <p>Краток опис за локацијата <br> <br>{{ $destination->imelokacija }} се наоѓа во {{ $destination->drzhava }}
-            со геоографски координати {{ $destination->lat }} и {{ $destination->lon }}. <br><br>
-            Тип на место: {{ $destination->tipovimesta }}. {{ $destination->opislokacija }}, додека пак автентично место
-            или пак место што доколку го посетите, а не отидете таму ќе зажалите е токму {{ $destination->ime }}.
-            {{ $destination->opis }} Популарност на местото е оценетта со {{ $destination->popularnost }}.<br><br>
-            Вообичаена препорачана сезона за посета: {{ $destination->preporachanasezona }}
-            и просечните температури се {{ $destination->prosechnatemp }} степени.
+        <h1>{{ $destination->location_name }}</h1>
+        <p>Краток опис за локацијата <br> <br>{{ $destination->location_name }} се наоѓа во {{ $destination->country }}
+            со геоографски координати {{ $destination->latitude }} и {{ $destination->longitude }}. <br><br>
+            Тип на место: {{ $destination->types_of_places }}. {{ $destination->location_desc }}, додека пак автентично место
+            или пак место што доколку го посетите, а не отидете таму ќе зажалите е токму {{ $destination->important_location_name }} -
+            {{ $destination->important_location_description }}. Популарност на местото е оценетта со {{ $destination->popularity }}.<br><br>
+            Вообичаена препорачана сезона за посета: {{ $destination->recommended_season }}
+            и просечните температури се {{ $destination->average_temp }} степени.
         </p>
 
         <div class="weather-container">
-            <a href="{{ route('weather.show', ['imelokacija' => $destination->imelokacija]) }}">
+            <a href="{{ route('weather.show', ['location_name' => $destination->location_name]) }}">
                 <img id="weather" src="{{ asset('images/weather.png') }}" alt="Weather">
             </a>
             <div class="tooltip">Погледнете ја временската прогноза</div>
@@ -340,41 +340,41 @@
 
                 <div class="col-sm-12 col-md-4">
                     <a class="lightbox"
-                       href="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '1.jpg') }}">
-                        <img src="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '1.jpg') }}"
-                             alt="Image 1 for {{ $destination->imelokacija }}">
+                       href="{{ asset('images/destinations/' . strtolower($destination->location_name) . '1.jpg') }}">
+                        <img src="{{ asset('images/destinations/' . strtolower($destination->location_name) . '1.jpg') }}"
+                             alt="Image 1 for {{ $destination->location_name }}">
                     </a>
                 </div>
 
                 <div class="col-sm-6 col-md-4">
                     <a class="lightbox"
-                       href="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '2.jpg') }}">
-                        <img src="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '2.jpg') }}"
-                             alt="Image 2 for {{ $destination->imelokacija }}">
+                       href="{{ asset('images/destinations/' . strtolower($destination->location_name) . '2.jpg') }}">
+                        <img src="{{ asset('images/destinations/' . strtolower($destination->location_name) . '2.jpg') }}"
+                             alt="Image 2 for {{ $destination->location_name }}">
                     </a>
                 </div>
 
                 <div class="col-sm-6 col-md-4">
                     <a class="lightbox"
-                       href="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '3.jpg') }}">
-                        <img src="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '3.jpg') }}"
-                             alt="Image 3 for {{ $destination->imelokacija }}">
+                       href="{{ asset('images/destinations/' . strtolower($destination->location_name) . '3.jpg') }}">
+                        <img src="{{ asset('images/destinations/' . strtolower($destination->location_name) . '3.jpg') }}"
+                             alt="Image 3 for {{ $destination->location_name }}">
                     </a>
                 </div>
 
                 <div class="col-sm-12 col-md-8">
                     <a class="lightbox"
-                       href="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '4.jpg') }}">
-                        <img src="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '4.jpg') }}"
-                             alt="Image 4 for {{ $destination->imelokacija }}">
+                       href="{{ asset('images/destinations/' . strtolower($destination->location_name) . '4.jpg') }}">
+                        <img src="{{ asset('images/destinations/' . strtolower($destination->location_name) . '4.jpg') }}"
+                             alt="Image 4 for {{ $destination->location_name }}">
                     </a>
                 </div>
 
                 <div class="col-sm-6 col-md-4">
                     <a class="lightbox"
-                       href="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '5.jpg') }}">
-                        <img src="{{ asset('images/destinations/' . strtolower($destination->imelokacija) . '5.jpg') }}"
-                             alt="Image 5 for {{ $destination->imelokacija }}">
+                       href="{{ asset('images/destinations/' . strtolower($destination->location_name) . '5.jpg') }}">
+                        <img src="{{ asset('images/destinations/' . strtolower($destination->location_name) . '5.jpg') }}"
+                             alt="Image 5 for {{ $destination->location_name }}">
                     </a>
                 </div>
 
@@ -387,7 +387,7 @@
     <div id="cardsEvents" class="row">
 
         <div id="cardEvent" class="col-md-4 col-sm-6 mb-4">
-            <a href="{{ route('travelEvents.index', ['destination' => $destination->imelokacija]) }}"
+            <a href="{{ route('travelEvents.index', ['destination' => $destination->location_name]) }}"
                class="text-decoration-none">
 
                 <div class="card-custom">
@@ -400,7 +400,7 @@
         </div>
 
         <div id="cardActivity" class="col-md-4 col-sm-6 mb-4">
-            <a href="{{ route('travelActivities.index', ['destination' => $destination->imelokacija]) }}"
+            <a href="{{ route('travelActivities.index', ['destination' => $destination->location_name]) }}"
                class="text-decoration-none">
                 <div class="card-custom">
                     <img src="{{ asset('images/aktivnosti.png') }}" alt="Активности" class="card-img-top">

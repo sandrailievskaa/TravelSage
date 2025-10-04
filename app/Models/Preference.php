@@ -7,12 +7,12 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Preference extends Model
 {
-    protected $table = 'travel_sage.preferenci';
+    protected $table = 'travel_sage.preference';
 
-    protected $primaryKey = 'idprferenca';
+    protected $primaryKey = 'id_preference';
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(TravelSageUser::class, 'idkorisnik');
+        return $this->belongsTo(TravelSageUser::class, 'id_user');
     }
 }

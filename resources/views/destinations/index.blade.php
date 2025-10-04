@@ -40,8 +40,8 @@
                         <img src="{{ asset('images/' . $randomImage) }}" alt=""/>
                     </figure>
                     <div class="article-body">
-                        <h2>{{ $destination->imelokacija }}</h2>
-                        <p>Тип на локација: {{ $destination->tipovimesta }} </p>
+                        <h2>{{ $destination->location_name }}</h2>
+                        <p>Тип на локација: {{ $destination->types_of_places }} </p>
                         <a href="{{ route('destinations.show', $destination) }}" class="read-more">
                             Прочитај повеќе
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20"

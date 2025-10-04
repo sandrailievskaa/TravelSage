@@ -51,7 +51,7 @@
         const ctx = document.getElementById('cheapChart').getContext('2d');
 
         const data = {
-            labels: {!! json_encode($data->pluck('imelokacija')) !!},
+            labels: {!! json_encode($data->pluck('location_name')) !!},
             datasets: [{
                 label: 'Процент на евтини активности',
                 data: {!! json_encode($data->pluck('procent_cheap')) !!},

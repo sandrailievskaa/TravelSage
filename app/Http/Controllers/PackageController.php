@@ -12,10 +12,10 @@ class PackageController extends Controller
 {
     public function travelPackages(Destination $destination): View|Factory|Application
     {
-        $paketi = TravelPackage::query()
-            ->where('imepaket', 'like', "%$destination->preporachanasezona%")
+        $packages = TravelPackage::query()
+            ->where('package_name', 'like', "%$destination->recommended_season%")
             ->get();
 
-        return view('destinations.packages', compact('destination', 'paketi'));
+        return view('destinations.packages', compact('destination', 'packages'));
     }
 }

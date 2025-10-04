@@ -8,22 +8,18 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Review extends Model
 {
-    protected $table = 'travel_sage.recenzii';
+    protected $table = 'travel_sage.review';
 
-    protected $primaryKey = 'idrecenzija';
+    protected $primaryKey = 'id_review';
 
-    public function user(): BelongsTo
-    {
-        return $this->belongsTo(User::class, 'idkorisnik');
-    }
 
     public function destination(): BelongsTo
     {
-        return $this->belongsTo(Destination::class, 'iddest');
+        return $this->belongsTo(Destination::class, 'id_destination');
     }
 
     public function reservation(): HasOne
     {
-        return $this->hasOne(Reservation::class, 'idrecenzija');
+        return $this->hasOne(Reservation::class, 'reservation_id');
     }
 }

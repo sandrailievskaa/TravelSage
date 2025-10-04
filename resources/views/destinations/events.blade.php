@@ -50,16 +50,16 @@
     </div>
 
     <div class="cardsStyle position-absolute">
-        @if(isset($nastani) && $nastani->count())
-            @foreach($nastani as $event)
+        @if(isset($events) && $events->count())
+            @foreach($events as $event)
                 <div id="listCard" class="card mb-3">
-                    <div class="card-header">{{ $event->naziv }}</div>
+                    <div class="card-header">{{ $event->event_name }}</div>
                     <div class="card-body">
-                        <h5 class="card-title">{{ $event->vidovi }}</h5>
-                        <p class="card-text">Детали за настанот: {{ $event->detali }}</p>
+                        <h5 class="card-title">{{ $event->event_type }}</h5>
+                        <p class="card-text">Детали за настанот: {{ $event->details }}</p>
                         <p class="card-text">
-                            <strong>Од:</strong> {{ $event->pochetendatum }}<br>
-                            <strong>До:</strong> {{ $event->kraendatum }}
+                            <strong>Од:</strong> {{ $event->start_date }}<br>
+                            <strong>До:</strong> {{ $event->end_date }}
                         </p>
                     </div>
                 </div>

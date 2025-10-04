@@ -58,7 +58,7 @@
 
         <form method="GET" action="{{ route('destinations.index') }}">
             <div class="form-group">
-                <select id="typeDest" name="tipovimesta" class="form-control">
+                <select id="typeDest" name="types_of_places" class="form-control">
                     <option value="" disabled selected>Тип на место</option>
                     <option value="any">Сите</option>
                     <option value="море">Море</option>
@@ -71,7 +71,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <select id="season" name="preporachanasezona" class="form-control">
+                <select id="season" name="recommended_season" class="form-control">
                     <option value="" disabled selected>Посакувана сезона</option>
                     <option value="any">Сите</option>
                     <option value="пролет">Пролет</option>
@@ -81,7 +81,7 @@
                 </select>
             </div>
             <div class="form-group">
-                <select id="popularnost" name="popularnost" class="form-control">
+                <select id="popularity" name="popularity" class="form-control">
                     <option value="" disabled selected>Популарност</option>
                     <option value="1-2">1-2</option>
                     <option value="3-4">3-4</option>

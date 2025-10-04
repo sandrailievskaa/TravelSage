@@ -28,11 +28,11 @@ class TravelEventController extends Controller
     {
         DB::transaction(function () use ($request) {
             $validatedData = $request->validate([
-                'naziv' => 'required|string|max:255',
-                'vidovi' => 'required|string|max:255',
-                'detali' => 'nullable|string',
-                'pochetendatum' => 'required|date',
-                'kraendatum' => 'required|date',
+                'event_name' => 'required|string|max:255',
+                'event_type' => 'required|string|max:255',
+                'details' => 'nullable|string',
+                'start_date' => 'required|date',
+                'end_date' => 'required|date',
             ]);
 
             TravelEvent::create($validatedData);

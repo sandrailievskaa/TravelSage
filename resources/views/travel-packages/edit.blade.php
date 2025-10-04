@@ -16,25 +16,25 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Име на пакетот</label>
-            <input type="text" name="imepaket" value="{{ old('imepaket', $travelPackage->imepaket) }}"
+            <input type="text" name="package_name" value="{{ old('package_name', $travelPackage->package_name) }}"
                    class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Цена</label>
-            <input type="number" name="cena" value="{{ old('cena', $travelPackage->cena) }}"
+            <input type="number" name="price" value="{{ old('price', $travelPackage->price) }}"
                    class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Почеток</label>
-            <input type="datetime-local" name="pochetok" value="{{ old('pochetok', $travelPackage->pochetok) }}"
+            <input type="datetime-local" name="start_date" value="{{ old('start_date', $travelPackage->start_date) }}"
                    class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Крај</label>
-            <input type="datetime-local" name="kraj" value="{{ old('kraj', $travelPackage->kraj) }}"
+            <input type="datetime-local" name="end_date" value="{{ old('end_date', $travelPackage->end_date) }}"
                    class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 

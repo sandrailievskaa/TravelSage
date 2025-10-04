@@ -20,40 +20,40 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'eposhta' => 'required|email',
+            'email' => 'required|email',
         ]);
 
-        $korisnik = TravelSageUser::where('eposhta', $request->eposhta)->first();
+        $user = TravelSageUser::where('email', $request->email)->first();
 
-        if ($korisnik) {
-            $request->session()->put('korisnik_id', $korisnik->id);
+        if ($user) {
+            $request->session()->put('id_user', $user->id);
 
             return redirect()->route('preferences')->with('success', 'Успешно најавени!');
         } else {
-            return back()->withErrors(['eposhta' => 'Корисникот не постои. Ве молиме регистрирајте се.']);
+            return back()->withErrors(['email' => 'Корисникот не постои. Ве молиме регистрирајте се.']);
         }
     }
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
-            'ime' => 'required|string|max:255',
-            'prezime' => 'required|string|max:255',
-            'eposhta' => 'required|email',
-            'telbr' => 'required|string|max:20',
-            'datumragjanje' => 'required|date',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'phone_number' => 'required|string|max:20',
+            'birth_date' => 'required|date',
         ]);
 
-        $korisnik = TravelSageUser::where('eposhta', $request->eposhta)->first();
+        $user = TravelSageUser::where('email', $request->email)->first();
 
-        if (! $korisnik) {
-            $korisnik = new TravelSageUser;
-            $korisnik->ime = $request->ime;
-            $korisnik->prezime = $request->prezime;
-            $korisnik->eposhta = $request->eposhta;
-            $korisnik->telbr = $request->telbr;
-            $korisnik->datumragjanje = $request->datumragjanje;
-            $korisnik->save();
+        if (! $user) {
+            $user = new TravelSageUser;
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->email = $request->email;
+            $user->phone_number = $request->phone_number;
+            $user->birth_date = $request->birth_date;
+            $user->save();
         }
 
         return redirect()->route('preferences')->with('success', 'Успешно сте најавени!');

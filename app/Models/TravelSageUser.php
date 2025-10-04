@@ -8,30 +8,26 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class TravelSageUser extends Model
 {
-    protected $table = 'travel_sage.korisnici';
+    protected $table = 'travel_sage.users';
 
     public $timestamps = false;
 
-    protected $primaryKey = 'idkorisnik';
+    protected $primaryKey = 'id_user';
 
-    public function reviews(): HasMany
+
+    public function reservation(): HasMany
     {
-        return $this->hasMany(Review::class, 'idkorisnik');
+        return $this->hasMany(Reservation::class, 'id_user');
     }
 
-    public function reservations(): HasMany
+    public function preference(): HasMany
     {
-        return $this->hasMany(Reservation::class, 'idkorisnik');
-    }
-
-    public function preferences(): HasMany
-    {
-        return $this->hasMany(Preference::class, 'idkorisnik');
+        return $this->hasMany(Preference::class, 'id_user');
     }
 
     public function recommendedDestinations(): BelongsToMany
     {
-        return $this->belongsToMany(Destination::class, 'destinacii_has_korisnici', 'idkorisnik', 'iddest')
-            ->withPivot(['ocena', 'komentar', 'datum']);
+        return $this->belongsToMany(Destination::class, 'destination_user', 'id_user', 'id_destination')
+            ->withPivot(['rating', 'comment', 'date']);
     }
 }

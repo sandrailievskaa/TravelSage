@@ -15,25 +15,25 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Име на пакетот</label>
-            <input type="text" name="imepaket"
+            <input type="text" name="package_name"
                    class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Цена</label>
-            <input type="number" name="cena"
+            <input type="number" name="price"
                    class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Почеток</label>
-            <input type="datetime-local" name="pochetok"
+            <input type="datetime-local" name="start_date"
                    class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Крај</label>
-            <input type="datetime-local" name="kraj"
+            <input type="datetime-local" name="end_date"
                    class="w-full border px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
         </div>
 

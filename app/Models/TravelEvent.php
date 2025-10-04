@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TravelEvent extends Model
 {
-    protected $table = 'travel_sage.nastani';
+    protected $table = 'travel_sage.event';
 
-    protected $primaryKey = 'idnastan';
+    protected $primaryKey = 'id_event';
 
     public $timestamps = false;
 
     public function destination(): BelongsTo
     {
-        return $this->belongsTo(Destination::class, 'iddest');
+        return $this->belongsTo(Destination::class, 'id_destination');
     }
 }

@@ -50,15 +50,15 @@
     </div>
 
     <div class="cardsStyle position-absolute">
-        @if(isset($paketi) && $paketi->count())
-            @foreach($paketi as $paket)
+        @if(isset($packages) && $packages->count())
+            @foreach($packages as $package)
                 <div id="listCard" class="card mb-3">
-                    <div class="card-header">{{ $paket->imepaket }}</div>
+                    <div class="card-header">{{ $package->package_name }}</div>
                     <div class="card-body">
-                        <h5 class="card-title">Износ: {{ $paket->cena }}</h5>
+                        <h5 class="card-title">Износ: {{ $package->price }}</h5>
                         <p class="card-text">
-                            <strong>Од:</strong> {{ $paket->pochetok }}<br>
-                            <strong>До:</strong> {{ $paket->kraj }}
+                            <strong>Од:</strong> {{ $package->start_date }}<br>
+                            <strong>До:</strong> {{ $package->end_date }}
                         </p>
                     </div>
                 </div>

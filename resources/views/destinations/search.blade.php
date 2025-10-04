@@ -21,7 +21,7 @@
 @else
     <ul>
         @foreach($results as $destination)
-            <li>{{ $destination->name }} - {{ $destination->tipovimesta }} - {{ $destination->preporachanasezona }}</li>
+            <li>{{ $destination->location_name }} - {{ $destination->types_of_places }} - {{ $destination->recommended_season }}</li>
         @endforeach
     </ul>
 @endif

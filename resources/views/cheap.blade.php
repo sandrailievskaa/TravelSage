@@ -157,12 +157,12 @@
         <article class="postcard">
             <img class="postcard__img" src="{{ $imagePath }}" alt="activity image"/>
             <div class="postcard__text">
-                <h1 class="postcard__title"><a href="#">{{ $activity->imeaktivnost }}</a></h1>
+                <h1 class="postcard__title"><a href="#">{{ $activity->activity_name }}</a></h1>
                 <div class="postcard__bar"></div>
-                <div class="postcard__preview-txt">{{ $activity->informacii }}</div>
+                <div class="postcard__preview-txt">{{ $activity->information }}</div>
                 <ul class="postcard__tagbox">
-                    <li class="tag__item">💸 {{ $activity->iznos }} ден.</li>
-                    <li class="tag__item"><i class="fas fa-tag"></i> {{ $activity->kategorija }}</li>
+                    <li class="tag__item">💸 {{ $activity->amount }} ден.</li>
+                    <li class="tag__item"><i class="fas fa-tag"></i> {{ $activity->category }}</li>
                 </ul>
             </div>
         </article>

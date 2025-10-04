@@ -17,25 +17,25 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Име</label>
-            <input type="text" name="imeaktivnost" value="{{ $travelActivity->imeaktivnost }}"
+            <input type="text" name="activity_name" value="{{ $travelActivity->activity_name }}"
                    class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Информации</label>
-            <input type="text" name="informacii" value="{{ $travelActivity->informacii }}"
+            <input type="text" name="information" value="{{ $travelActivity->information }}"
                    class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Категорија</label>
-            <input type="text" name="kategorija" value="{{ $travelActivity->kategorija }}"
+            <input type="text" name="category" value="{{ $travelActivity->category }}"
                    class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Износ</label>
-            <input type="number" name="iznos" value="{{ $travelActivity->iznos }}"
+            <input type="number" name="amount" value="{{ $travelActivity->amount }}"
                    class="w-full border px-4 py-2 rounded">
         </div>
 

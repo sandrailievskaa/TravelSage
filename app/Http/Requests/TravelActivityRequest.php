@@ -9,10 +9,10 @@ class TravelActivityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'imeaktivnost' => 'required|string|max:255',
-            'informacii' => 'nullable|string|max:255',
-            'kategorija' => 'required|string|max:255',
-            'iznos' => 'nullable|numeric',
+            'activity_name' => 'required|string|max:255',
+            'information' => 'nullable|string|max:255',
+            'category' => 'required|string|max:255',
+            'amount' => 'nullable|numeric',
         ];
     }
 }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Http;
 
-class WeatherConditionController extends Controller
+class MeteorologicalCondition extends Controller
 {
     public function show($location)
     {

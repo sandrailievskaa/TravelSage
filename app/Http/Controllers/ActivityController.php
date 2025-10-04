@@ -12,10 +12,10 @@ class ActivityController extends Controller
 {
     public function travelActivities(Destination $destination): View|Factory|Application
     {
-        $aktivnosti = TravelActivity::query()
-            ->whereLike('aktivnosti', "%$destination->preporachanasezona%")
+        $activities = TravelActivity::query()
+            ->whereLike('activity_name', "%$destination->recommended_season%")
             ->get();
 
-        return view('destinations.activities', compact('destination', 'aktivnosti'));
+        return view('destinations.activities', compact('destination', 'activities'));
     }
 }

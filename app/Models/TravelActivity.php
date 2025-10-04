@@ -8,24 +8,24 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class TravelActivity extends Model
 {
-    protected $table = 'travel_sage.aktivnosti';
+    protected $table = 'travel_sage.activity';
 
-    protected $primaryKey = 'idaktivnost';
+    protected $primaryKey = 'id_activity';
 
     public $timestamps = false;
 
     public function destination(): BelongsTo
     {
-        return $this->belongsTo(Destination::class, 'iddest');
+        return $this->belongsTo(Destination::class, 'id_destination');
     }
 
-    public function packages(): BelongsToMany
+    public function package(): BelongsToMany
     {
-        return $this->belongsToMany(TravelPackage::class, 'aktivnosti_has_paketi', 'idaktivnost', 'idpaket');
+        return $this->belongsToMany(TravelPackage::class, 'package_activity', 'id_activity', 'id_package');
     }
 
-    public function reservations(): BelongsToMany
+    public function reservation(): BelongsToMany
     {
-        return $this->belongsToMany(Reservation::class, 'aktivnosti_has_rezervacii', 'idaktivnost', 'idrezervacija');
+        return $this->belongsToMany(Reservation::class, 'activity_reservation', 'id_activity', 'id_reservation');
     }
 }

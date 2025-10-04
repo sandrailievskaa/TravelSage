@@ -2,54 +2,56 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\MeteorologicalCondition;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Destination extends Model
 {
-    protected $table = 'travel_sage.destinacii';
+    protected $table = 'travel_sage.destination';
 
-    protected $primaryKey = 'iddest';
+    protected $primaryKey = 'id_destination';
 
-    public function reviews(): HasMany
+    public function review(): HasMany
     {
-        return $this->hasMany(Review::class, 'iddest');
+        return $this->hasMany(Review::class, 'id_destination');
     }
 
-    public function weatherConditions(): HasMany
+    public function meteorological_condition(): HasMany
     {
-        return $this->hasMany(WeatherCondition::class, 'iddest');
+        return $this->hasMany(MeteorologicalCondition::class, 'id_destination');
     }
 
-    public function activities(): HasMany
+    public function activity(): HasMany
     {
-        return $this->hasMany(TravelActivity::class, 'iddest');
+        return $this->hasMany(TravelActivity::class, 'id_destination');
     }
 
-    public function events(): HasMany
+    public function event(): HasMany
     {
-        return $this->hasMany(TravelEvent::class, 'iddest');
+        return $this->hasMany(TravelEvent::class, 'id_destination');
     }
 
-    public function tags(): BelongsToMany
+    public function tag(): BelongsToMany
     {
-        return $this->belongsToMany(Tag::class, 'destinacii_has_tagovi', 'iddest', 'idtag');
+        return $this->belongsToMany(Tag::class, 'destination_tag', 'id_destination', 'id_tag');
     }
 
-    public function packages(): HasMany
+    public function package(): HasMany
     {
-        return $this->hasMany(TravelPackage::class, 'iddest');
+        return $this->hasMany(TravelPackage::class, 'id_destination');
     }
 
-    public function recommendedByUsers(): BelongsToMany
+    public function destination_user(): BelongsToMany
     {
-        return $this->belongsToMany(User::class, 'destinacii_has_korisnici', 'iddest', 'idkorisnik')
-            ->withPivot(['ocena', 'komentar', 'datum']);
+        return $this->belongsToMany(User::class, 'destination_user', 'id_destination', 'id_user')
+            ->withPivot(['rating', 'comment', 'recommendation_date']);
     }
 
     public function getRouteKeyName(): string
     {
-        return 'imelokacija';
+        return 'location_name';
     }
+
 }

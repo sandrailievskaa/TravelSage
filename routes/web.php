@@ -8,7 +8,7 @@ use App\Http\Controllers\PackageController;
 use App\Http\Controllers\TravelActivityController;
 use App\Http\Controllers\TravelEventController;
 use App\Http\Controllers\TravelPackageController;
-use App\Http\Controllers\WeatherConditionController;
+use App\Http\Controllers\MeteorologicalCondition;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DestinationController::class, 'home'])->name('home');
@@ -21,7 +21,7 @@ Route::prefix('/destinations/{destination}')->group(function () {
     Route::get('/travel-packages', [PackageController::class, 'travelPackages'])->name('travelPackages.index');
 });
 
-Route::get('/weather/{imelokacija}', [WeatherConditionController::class, 'show'])->name('weather.show');
+Route::get('/weather/{location_name}', [MeteorologicalCondition::class, 'show'])->name('weather.show');
 
 Route::prefix('/register')->group(function () {
     Route::get('/', [AuthController::class, 'showRegisterForm'])->name('register');

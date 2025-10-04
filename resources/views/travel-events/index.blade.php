@@ -31,12 +31,12 @@
         <tbody>
         @foreach ($travelEvents as $event)
             <tr class="border">
-                <td class="border px-4 py-2">{{ $event->idnastan }}</td>
-                <td class="border px-4 py-2">{{ $event->naziv }}</td>
-                <td class="border px-4 py-2">{{ $event->vidovi }}</td>
-                <td class="border px-4 py-2">{{ $event->detali }}</td>
-                <td class="border px-4 py-2">{{ $event->pochetendatum }}</td>
-                <td class="border px-4 py-2">{{ $event->kraendatum }}</td>
+                <td class="border px-4 py-2">{{ $event->id_event }}</td>
+                <td class="border px-4 py-2">{{ $event->event_name }}</td>
+                <td class="border px-4 py-2">{{ $event->event_type }}</td>
+                <td class="border px-4 py-2">{{ $event->details }}</td>
+                <td class="border px-4 py-2">{{ $event->start_date }}</td>
+                <td class="border px-4 py-2">{{ $event->end_date }}</td>
                 <td class="border px-4 py-2">
                     <a href="{{ route('travel-events.edit', $event) }}" class="text-blue-500">Измени</a>
                     <form action="{{ route('travel-events.destroy', $event) }}" method="POST" class="inline-block">

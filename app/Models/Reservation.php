@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\MeteorologicalCondition;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
@@ -9,29 +10,28 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Reservation extends Model
 {
-    protected $table = 'travel_sage.rezervacii';
+    protected $table = 'travel_sage.reservation';
 
-    protected $primaryKey = 'idrezervacija';
+    protected $primaryKey = 'id_reservation';
 
     public $timestamps = false;
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(TravelSageUser::class, 'idkorisnik');
+        return $this->belongsTo(TravelSageUser::class, 'id_user');
     }
 
-    public function weather(): BelongsTo
+    public function activity(): BelongsToMany
     {
-        return $this->belongsTo(WeatherCondition::class, 'idmeteo');
+        return $this->belongsToMany(TravelActivity::class, 'activity_reservation', 'id_reservation', 'id_activity');
     }
-
-    public function activities(): BelongsToMany
+    public function package(): BelongsToMany
     {
-        return $this->belongsToMany(TravelActivity::class, 'aktivnosti_has_rezervacii', 'idrezervacija', 'idaktivnost');
+        return $this->belongsToMany(TravelPackage::class, 'package_reservation', 'id_reservation', 'id_package');
     }
 
     public function review(): HasOne
     {
-        return $this->hasOne(Review::class, 'idrezervacija');
+        return $this->hasOne(Review::class, 'id_reservation');
     }
 }

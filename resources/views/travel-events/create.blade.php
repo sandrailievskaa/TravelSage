@@ -15,27 +15,27 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Име</label>
-            <input type="text" name="naziv" class="w-full border px-4 py-2 rounded">
+            <input type="text" name="event_name" class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Тип</label>
-            <input type="text" name="vidovi" class="w-full border px-4 py-2 rounded">
+            <input type="text" name="event_type" class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Детали</label>
-            <textarea name="detali" class="w-full border px-4 py-2 rounded"></textarea>
+            <textarea name="details" class="w-full border px-4 py-2 rounded"></textarea>
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Почетен датум</label>
-            <input type="date" name="pochetendatum" class="w-full border px-4 py-2 rounded">
+            <input type="date" name="start_date" class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Краен датум</label>
-            <input type="date" name="kraendatum" class="w-full border px-4 py-2 rounded">
+            <input type="date" name="end_date" class="w-full border px-4 py-2 rounded">
         </div>
 
         <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Додади настан</button>

@@ -8,17 +8,12 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class WeatherCondition extends Model
 {
-    protected $table = 'travel_sage.meteroloshkasostojba';
+    protected $table = 'travel_sage.meteorological_condition';
 
-    protected $primaryKey = 'idmeteo';
-
-    public function reservations(): HasMany
-    {
-        return $this->hasMany(Reservation::class, 'idvreme');
-    }
+    protected $primaryKey = 'id_meteo';
 
     public function destination(): BelongsTo
     {
-        return $this->belongsTo(Destination::class, 'iddest');
+        return $this->belongsTo(Destination::class, 'id_destination');
     }
 }

@@ -30,11 +30,11 @@
         <tbody>
         @foreach ($travelPackages as $package)
             <tr class="border">
-                <td class="border px-4 py-2">{{ $package->idpaket }}</td>
-                <td class="border px-4 py-2">{{ $package->imepaket }}</td>
-                <td class="border px-4 py-2">{{ $package->cena }}</td>
-                <td class="border px-4 py-2">{{ $package->pochetok }}</td>
-                <td class="border px-4 py-2">{{ $package->kraj }}</td>
+                <td class="border px-4 py-2">{{ $package->id_package }}</td>
+                <td class="border px-4 py-2">{{ $package->package_name }}</td>
+                <td class="border px-4 py-2">{{ $package->price }}</td>
+                <td class="border px-4 py-2">{{ $package->start_date }}</td>
+                <td class="border px-4 py-2">{{ $package->end_date }}</td>
                 <td class="border px-4 py-2">
                     <a href="{{ route('travel-packages.edit', $package) }}" class="text-blue-500">Измени</a>
                     <form action="{{ route('travel-packages.destroy', $package) }}" method="POST" class="inline-block">

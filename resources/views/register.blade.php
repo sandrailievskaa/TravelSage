@@ -51,16 +51,16 @@
         <form action="{{ route('register') }}" method="POST">
             @csrf
             <div class="form-group">
-                <input type="text" name="ime" class="form-control" placeholder="Име" required>
+                <input type="text" name="first_name" class="form-control" placeholder="Име" required>
             </div>
             <div class="form-group">
-                <input type="text" name="prezime" class="form-control" placeholder="Презиме" required>
+                <input type="text" name="last_name" class="form-control" placeholder="Презиме" required>
             </div>
             <div class="form-group">
-                <input type="email" name="eposhta" class="form-control" placeholder="Е-пошта" required>
+                <input type="email" name="email" class="form-control" placeholder="Е-пошта" required>
             </div>
             <div class="form-group">
-                <input type="tel" name="telbr" class="form-control" placeholder="Телефонски број" required>
+                <input type="tel" name="phone_number" class="form-control" placeholder="Телефонски број" required>
             </div>
             <div class="form-group">
                 <input type="password" name="password" class="form-control" placeholder="Лозинка" required>
@@ -70,10 +70,10 @@
                        required>
             </div>
             <div class="form-group">
-                <input type="date" name="datumragjanje" class="form-control" required>
+                <input type="date" name="birth_date" class="form-control" required>
             </div>
             <div class="form-group">
-                <select name="iddest" class="form-control" required>
+                <select name="id_destination" class="form-control" required>
                     <option value="" disabled selected>Тип корисник</option>
                     <option value="standard">Стандард</option>
                     <option value="premium">Премиум</option>

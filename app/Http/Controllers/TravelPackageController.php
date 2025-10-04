@@ -28,10 +28,10 @@ class TravelPackageController extends Controller
     {
         DB::transaction(function () use ($request) {
             $validatedData = $request->validate([
-                'imepaket' => 'required|string|max:255',
-                'cena' => 'required|numeric',
-                'pochetok' => 'required|date_format:Y-m-d\TH:i',
-                'kraj' => 'required|date_format:Y-m-d\TH:i|after_or_equal:pochetok',
+                'package_name' => 'required|string|max:255',
+                'price' => 'required|numeric',
+                'start_date' => 'required|date_format:Y-m-d\TH:i',
+                'end_date' => 'required|date_format:Y-m-d\TH:i|after_or_equal:start_date',
             ]);
 
             TravelPackage::create($validatedData);

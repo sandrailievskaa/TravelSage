@@ -51,7 +51,7 @@
         <form action="{{ route('login') }}" method="POST">
             @csrf
             <div class="form-group">
-                <input type="email" name="eposhta" class="form-control" placeholder="Е-пошта" required>
+                <input type="email" name="email" class="form-control" placeholder="Е-пошта" required>
             </div>
             <button type="submit" class="btn">Најави се</button>
         </form>

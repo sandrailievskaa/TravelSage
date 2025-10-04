@@ -15,22 +15,22 @@
 
         <div class="mb-4">
             <label class="block text-gray-700">Име</label>
-            <input type="text" name="imeaktivnost" class="w-full border px-4 py-2 rounded">
+            <input type="text" name="activity_name" class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Информации</label>
-            <input type="text" name="informacii" class="w-full border px-4 py-2 rounded">
+            <input type="text" name="information" class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Категорија</label>
-            <input type="text" name="kategorija" class="w-full border px-4 py-2 rounded">
+            <input type="text" name="category" class="w-full border px-4 py-2 rounded">
         </div>
 
         <div class="mb-4">
             <label class="block text-gray-700">Износ</label>
-            <input type="number" name="iznos" class="w-full border px-4 py-2 rounded">
+            <input type="number" name="amount" class="w-full border px-4 py-2 rounded">
         </div>
 
         <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded">Додади активност</button>

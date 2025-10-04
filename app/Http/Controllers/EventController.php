@@ -12,12 +12,12 @@ class EventController extends Controller
 {
     public function travelEvents(Destination $destination): View|Factory|Application
     {
-        $lokacija = $destination->imelokacija;
+        $location = $destination->location_name;
 
-        $nastani = TravelEvent::where('naziv', 'LIKE', "%$lokacija%")
-            ->orWhere('detali', 'LIKE', "%$lokacija%")
+        $events = TravelEvent::where('event_name', 'LIKE', "%$location%")
+            ->orWhere('details', 'LIKE', "%$location%")
             ->get();
 
-        return view('destinations.events', compact('destination', 'nastani'));
+        return view('destinations.events', compact('destination', 'events'));
     }
 }
